@@ -15,6 +15,7 @@ async function login(prev: unknown, data: FormData) {
 
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
+  window.location.href = "/app";
   return {
     success: true,
     message: "Logged in successfully."
