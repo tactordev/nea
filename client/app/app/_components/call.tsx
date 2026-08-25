@@ -1,6 +1,6 @@
 import Section from "./section";
 
 
-export default function Units() {
-    return <Section title="units" className="row-span-2" />
+export default function Call() {
+    return <Section title="Call" className="row-span-2" />
 }
