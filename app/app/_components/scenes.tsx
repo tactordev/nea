@@ -41,19 +41,27 @@ function FilterBar() {
     return (
         <div className="grid grid-cols-123 w-full py-0.5 rounded-md sticky top-2 bg-zinc-200/1 border-1 border-zinc-200/2 shadow-sm backdrop-blur-md">
             <Filter className="col-span-20" name="id">
-                <Hash xlinkTitle="ID" className="w-3.5 h-3.5 text-zinc-300" />
+                <Hash className="w-3.5 h-3.5 text-zinc-300">
+                    <title>Scene ID</title>
+                </Hash>
             </Filter>
             <Separator />
             <Filter className="col-span-20" name="type">
-                <ListSortDescending className="w-4 h-4 text-zinc-300" />
+                <ListSortDescending className="w-4 h-4 text-zinc-300">
+                    <title>Scene Type</title>
+                </ListSortDescending>
             </Filter>
             <Separator />
             <Filter className="col-span-60" name="involved officers">
-                <UserSearch className="w-4 h-4 text-zinc-300" />
+                <UserSearch className="w-4 h-4 text-zinc-300">
+                    <title>Involved Units</title>
+                </UserSearch>
             </Filter>
             <Separator />
             <Filter className="col-span-20" name="time elapsed">
-                <Clock className="w-4 h-4 text-zinc-300" />
+                <Clock className="w-4 h-4 text-zinc-300">
+                    <title>Elapsed Time</title>
+                </Clock>
             </Filter>
         </div>
     )
