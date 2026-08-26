@@ -7,6 +7,12 @@ interface FilterProps extends React.HTMLAttributes<HTMLDivElement> {
     width?: string;
 }
 
+type Record = {
+    id: number;
+    type: number;
+    involved: Unit[]
+}
+
 function title(value: string) {
     return value.split(" ").map((v) => {
         return `${v.slice(0, 1).toUpperCase()}${v.length > 1 ? v.slice(1) : ""}`;
@@ -58,10 +64,57 @@ function FilterBar() {
     )
 }
 
+
+const testData = [
+    {
+        id: 1,
+        type: 1,
+        involved: [
+
+        ],
+        time: 20
+    },
+    {
+        id: 1,
+        type: 2,
+        involved: [
+            {
+                id: 1,
+                callsign: "1L-4A1",
+                type: "police"
+            }
+        ]
+    }
+]
+function Record(
+    {
+        data
+    }: {
+        data: Record
+    }
+) {
+    return (
+        <div>
+            <p>data</p>
+        </div>
+    )
+}
+
+function RecordList(
+    {
+        data
+    }: {
+        data: Record[]
+    }
+) {
+    return data.map((d) => <Record data={d} />);
+}
+
 export default function Scenes() {
     return (
         <Section className="gap-2" title="Scenes">
             <FilterBar />
+            <RecordList data={testData} />
         </Section>
     )
 }
