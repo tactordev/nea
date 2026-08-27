@@ -63,32 +63,36 @@ function FilterBar() {
 
 const testData: Unit[] = [
     {
-        id: 1,
+        unitId: 1,
         callsign: "1L-4A1",
-        type: "police",
+        department: "police",
         status: "On-scene at #1",
-        occupants: 2
+        occupants: 2,
+        location: [0, 0]
     },
     {
-        id: 2,
+        unitId: 2,
         callsign: "1T-211",
-        type: "ambulance",
+        department: "ambulance",
         status: "On-scene at #1",
-        occupants: 2
+        occupants: 2,
+        location: [0, 0]
     },
     {
-        id: 3,
+        unitId: 3,
         callsign: "4D-12",
-        type: "fire",
+        department: "fire",
         status:" On-scene at #1",
-        occupants: 5
+        occupants: 5,
+        location: [0, 0]
     },
     {
-        id: 4,
+        unitId: 4,
         callsign: "4D-8",
-        type: "fire",
+        department: "fire",
         status: "On standby",
-        occupants: 4
+        occupants: 4,
+        location: [0, 0]
     }
 ]
 function Record(
@@ -101,7 +105,7 @@ function Record(
     return (
         <div className="grid grid-cols-120 w-full pb-1.5 border-b-1 border-zinc-300/10 items-center p-0 m-0">
             <p className="text-zinc-300 px-2 col-span-20 font-mono tabular-nums">{ data.callsign }</p>
-            <p className={`text-zinc-300 px-2 col-span-30 font-mono tabular-nums text-sm px-2 py-0.5 rounded-sm w-fit ${data.type === "police" ? "bg-blue-500/10" : data.type === "ambulance" ? "bg-white/10" : "bg-red-500/10" }`}>{ title(data.type) }</p>
+            <p className={`text-zinc-300 px-2 col-span-30 font-mono tabular-nums text-sm px-2 py-0.5 rounded-sm w-fit ${data.department === "police" ? "bg-blue-500/10" : data.department === "ambulance" ? "bg-white/10" : "bg-red-500/10" }`}>{ title(data.department) }</p>
             <p className="text-zinc-300 px-2 col-span-20 font-mono tabular-nums">{ data.occupants }</p>
             <p className="text-zinc-300/80 px-2 col-span-50 font-mono tabular-nums text-sm truncate">{ data.status }</p>
         </div>
@@ -115,7 +119,7 @@ function RecordList(
         data: Unit[]
     }
 ) {
-    return data.map((d, index) => <Record key={`scene_record_${index}`} data={d} />);
+    return data.map((d, index) => <Record key={`unit_record_${index}`} data={d} />);
 }
 
 export default function Units() {

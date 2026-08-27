@@ -3,12 +3,13 @@
 export type UnitType = "police" | "ambulance" | "fire";
 
 export interface RecordUnit {
-    id: number;
+    unitId: number;
     callsign: string;
-    type: UnitType;
+    department: UnitType;
 }
 
 export interface Unit extends RecordUnit {
     occupants: number;
     status: string;
+    location: number[]
 }

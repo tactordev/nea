@@ -1,6 +1,6 @@
 import { ChevronDown, Clock, Hash, ListSortDescending, UserSearch } from "lucide-react";
 import Section from "./section";
-import { SceneRecord } from "@/types/scenes";
+import { RecordScene } from "@/types/scenes";
 
 
 interface FilterProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -62,56 +62,56 @@ function FilterBar() {
 }
 
 
-const testData: SceneRecord[] = [
+const testData: RecordScene[] = [
     {
-        id: 1,
-        type: 1,
-        involved: [
+        sceneId: 1,
+        type: "1",
+        units: [
 
         ],
-        elapsed: 20
+        startTime: 20
     },
     {
-        id: 1,
-        type: 2,
-        involved: [
+        sceneId: 1,
+        type: "2",
+        units: [
             {
-                id: 1,
+                unitId: 1,
                 callsign: "1L-4A1",
-                type: "police"
+                department: "police"
             },
             {
-                id: 2,
+                unitId: 2,
                 callsign: "1T-211",
-                type: "ambulance"
+                department: "ambulance"
             },
             {
-                id: 3,
+                unitId: 3,
                 callsign: "4D-12",
-                type: "fire"
+                department: "fire"
             }
         ],
-        elapsed: 120
+        startTime: 120
     }
 ]
 function Record(
     {
         data
     }: {
-        data: SceneRecord
+        data: RecordScene
     }
 ) {
     return (
         <div className="grid grid-cols-120 w-full pb-1.5 border-b-1 border-zinc-300/10 items-center p-0 m-0">
-            <p className="text-zinc-300 px-2 col-span-20 font-mono tabular-nums">{ data.id }</p>
+            <p className="text-zinc-300 px-2 col-span-20 font-mono tabular-nums">{ data.sceneId }</p>
             <p className="text-zinc-300 px-2 col-span-20 font-mono tabular-nums">{ data.type }</p>
             <div className="flex flex-row px-2 col-span-60 gap-2 truncate">
                 {
-                    data.involved.length > 0 ? data.involved.map((u, i) => <p key={`scene_record_callsign_${data.id}_${u.id}`} className={`text-zinc-300 text-sm font-mono tabular-nums px-2 py-0.5 rounded-md ${u.type === "police" ? "bg-blue-500/10" : u.type === "ambulance" ? "bg-white/10" : "bg-red-500/10" }`}>{u.callsign}</p>)
+                    data.units.length > 0 ? data.units.map((u, i) => <p key={`scene_record_callsign_${data.sceneId}_${u.unitId}`} className={`text-zinc-300 text-sm font-mono tabular-nums px-2 py-0.5 rounded-md ${u.department === "police" ? "bg-blue-500/10" : u.department === "ambulance" ? "bg-white/10" : "bg-red-500/10" }`}>{u.callsign}</p>)
                     : <p className="font-mono text-zinc-300/80 text-sm px-2 col-span-60">No units attached.</p>
                 }
             </div>
-            <p className="text-zinc-300 px-2 col-span-20 font-mono tabular-nums truncate">{ data.elapsed } seconds</p>
+            <p className="text-zinc-300 px-2 col-span-20 font-mono tabular-nums truncate">{ data.startTime } seconds</p>
         </div>
     )
 }
@@ -120,7 +120,7 @@ function RecordList(
     {
         data
     }: {
-        data: SceneRecord[]
+        data: RecordScene[]
     }
 ) {
     return data.map((d, index) => <Record key={`scene_record_${index}`} data={d} />);
