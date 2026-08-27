@@ -1,11 +1,13 @@
-
+"use client";
 import Cad from "./_components/cad";
 import Call from "./_components/call";
-import Map from "./_components/map";
 import Scenes from "./_components/scenes";
 import Units from "./_components/units";
+import dynamic from "next/dynamic";
 
-
+const Map = dynamic(() => import("./_components/map"), {
+    ssr: false
+});
 
 export default function App() {
     return (
