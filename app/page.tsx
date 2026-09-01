@@ -1,6 +1,6 @@
 "use client";
-import Input from "./_components/input";
-import InputButton from "./_components/button";
+import Input from "@/components/input";
+import InputButton from "@/components/button";
 import {
   CircleUser,
   User,
