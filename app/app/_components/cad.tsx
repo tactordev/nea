@@ -56,7 +56,7 @@ export default function Cad() {
                             {
                                 Object.keys(f.fields).map((fi: string, i: number) =>
                                     <Input key={`cad_log_${curLog}_forms_${i}_field_${fi}`} disabled={isSaving} name={`field-${fi}`} defaultValue={f.fields[fi as keyof typeof f.fields] as string} placeholder={fi}>
-                                        <p>{title(fi, "camel")}</p>
+                                        <p className="text-sm text-zinc-300/80">{title(fi, "camel")}</p>
                                     </Input>
                                 )
                             }
