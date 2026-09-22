@@ -9,28 +9,13 @@ import {
 } from "lucide-react";
 import { useActionState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { login } from "@/lib/actions";
 
-async function login(prev: unknown, data: FormData) {
-  const username = data.get("username");
-  const pwd = data.get("password");
-
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-
-  return {
-    success: true,
-    message: "Logged in successfully."
-  };
-}
 
 export default function Home() {
-  const [state, action, isPending] = useActionState(login, undefined);
+  const [state, action, isPending] = useActionState(login, null);
   const router = useRouter();
 
-  useEffect(() => {
-    if (state?.success) {
-      router.push("/app");
-    }
-  }, [state, router]);
 
   return (
     <main className="flex flex-col w-full h-full items-center justify-center">
@@ -41,13 +26,16 @@ export default function Home() {
         </div>
         <form action={action} className="flex flex-col w-full h-full gap-2">
           <Input disabled={isPending} name="username" placeholder="Username">
-            <User className="w-6 h-6 text-zinc-200/40" />
+            <User className="w-5 h-5 text-zinc-200/40" />
             <p className="text-base text-zinc-200/40">Username</p>
           </Input>
           <Input disabled={isPending} name="password" placeholder="Password">
             <LockKeyhole className="w-5 h-5 text-zinc-200/40" />
             <p className="text-base text-zinc-200/40">Password</p>
           </Input>
+          {state?.error && (
+            <p>{state.error}</p>
+          )}
           <InputButton className={`flex flex-row h-8 gap-2 justify-center items-center ${isPending ? "opacity-60" : ""}`}>
             { isPending ? <LoaderCircle className="w-4 h-4 text-zinc-300/80 animate-spin" />
               : <p className="text-sm text-zinc-300/60">Login</p>
