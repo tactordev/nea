@@ -7,12 +7,8 @@ function split(value: string, detector: string): string[] {
             let latestDeletion = 0;
             const chunks: string[] = [];
             for (const char of value) {
-                console.log(char);
                 if (char.toLowerCase() !== char) {
-                    console.log("found capital");
                     const chunk = value.slice(latestDeletion, count);
-                    console.log("chunk", chunk);
-                    chunks.push(chunk);
                     latestDeletion = count;
                 }
                 count++;
