@@ -1,3 +1,6 @@
+import * as dotenv from "dotenv";
+dotenv.config();
+
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 
