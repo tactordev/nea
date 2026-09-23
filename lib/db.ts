@@ -1,3 +1,6 @@
+import * as dotenv from "dotenv";
+dotenv.config();
+
 import { drizzle } from "drizzle-orm/node-postgres";
 
 const connection = process.env.DATABASE_URL;
