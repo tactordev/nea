@@ -27,7 +27,7 @@ export default function Input(
             />
             <label
                 htmlFor={inputId}
-                className="absolute pointer-events-none origin-left w-fit h-full top-0 left-0 flex flex-row justify-start items-center ml-1 gap-1 peer-focus:scale-80 peer-focus:-top-4 peer-focus:left-2 peer-not-placeholder-shown:scale-80 peer-not-placeholder-shown:-top-4 peer-not-placeholder-shown:left-1  rounded-md transition-all duration-200"
+                className="absolute pointer-events-none origin-left w-fit h-full top-0 left-0 flex flex-row justify-start items-center ml-2 gap-1 peer-focus:scale-80 peer-focus:-top-4 peer-focus:left-2 peer-not-placeholder-shown:scale-80 peer-not-placeholder-shown:-top-4 peer-not-placeholder-shown:left-1  rounded-md transition-all duration-200"
             >
                 {children}
             </label>

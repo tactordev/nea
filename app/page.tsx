@@ -29,12 +29,12 @@ export default function Home() {
             <User className="w-5 h-5 text-zinc-200/40" />
             <p className="text-base text-zinc-200/40">Username</p>
           </Input>
-          <Input disabled={isPending} name="password" placeholder="Password">
-            <LockKeyhole className="w-5 h-5 text-zinc-200/40" />
-            <p className="text-base text-zinc-200/40">Password</p>
+          <Input type="password" disabled={isPending} name="password" placeholder="Password">
+            <LockKeyhole className="w-4 h-4 text-zinc-200/40" />
+            <p className="text-base ml-1 mt-0.5 text-zinc-200/40">Password</p>
           </Input>
           {state?.error && (
-            <p>{state.error}</p>
+            <p className="flex flex-row w-full items-center justify-center text-sm text-red-400/80">{state.error}</p>
           )}
           <InputButton className={`flex flex-row h-8 gap-2 justify-center items-center ${isPending ? "opacity-60" : ""}`}>
             { isPending ? <LoaderCircle className="w-4 h-4 text-zinc-300/80 animate-spin" />
