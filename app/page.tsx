@@ -41,7 +41,12 @@ export default function Home() {
               : <p className="text-sm text-zinc-300/60">Login</p>
             }
           </InputButton>
-          <p onClick={() => { router.replace("/register"); }} className="text-xs text-zinc-200/40 ml-1 border-b border-zinc-200/40 w-fit hover:border-zinc-200/60 hover:text-zinc-200/60 cursor-pointer transition-colors duration-200">Register</p>
+          <p
+            onClick={() => { router.replace("/register"); }}
+            className="text-xs text-zinc-200/40 ml-1 border-b border-zinc-200/40 w-fit hover:border-zinc-200/60 hover:text-zinc-200/60 cursor-pointer transition-colors duration-200"
+          >
+            Register
+          </p>
         </form>
       </div>
     </main>
