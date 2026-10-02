@@ -9,7 +9,16 @@ import { exit } from "process";
 
 
 async function main() {
-    const hash = await bcrypt.hash("admin@123", parseInt(process.env.SALT_ROUNDS || "10"));
+    let salt_rounds: Number = 10;
+    
+    try {
+        const temp = process.env.SALT_ROUNDS;
+        salt_rounds = parseInt(temp);
+    } catch (err) {
+        console.warn("Error passing salt rounds: ", err);
+    }
+    
+    const hash = await bcrypt.hash(process.env.ADMIN_PASSWORD || "admin@123", salt_rounds);
     const insertion = await db.insert(usersTable).values({ username: "admin", passwordHash: hash });
     console.log("Insertion completed.");
 
