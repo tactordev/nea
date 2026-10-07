@@ -32,6 +32,7 @@ export async function login(prev: any, data: FormData) {
     redirect("/app");
 };
 
+
 export async function logout() {
     await delSession();
     redirect("/");
